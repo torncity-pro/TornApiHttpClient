@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Anonymous</Authors>
+    <Company>TornCityPro</Company>
+    <Product>TornApiHttpClient</Product>
+    <Description>An interface to the Torn City API.</Description>
+    <Copyright>2020</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Torn TornCity City API</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/torncity-pro/TornApiHttpClient</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/torncity-pro/TornApiHttpClient</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TornCityJsonData" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
