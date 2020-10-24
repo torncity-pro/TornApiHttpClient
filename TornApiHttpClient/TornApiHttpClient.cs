@@ -29,6 +29,21 @@ namespace TornApiHttpClient
         }
 
         /// <summary>
+        /// Gets data from the Torn endpoint
+        /// </summary>
+        /// <typeparam name="T">The type of the data to deserialize</typeparam>
+        /// <param name="endpoint">One of User, Faction, Company, Torn, Property, Market</param>
+        /// <param name="resource">The id of what you want to query</param>
+        /// <param name="selections">The selections you want to make</param>
+        /// <param name="apikey">The apikey to use for the request</param>
+        /// <param name="cancellationToken">The cancellation token for the async</param>
+        /// <returns></returns>
+        public async Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, CancellationToken cancellationToken = default) where T : PropertyBagBase
+        {
+            return await GetTornDataAsync<T>(string.Format("{0}/{1}?selections={2}&key={3}", endpoint, resource, selections, apikey), cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Gets the json response from the api endpoint and deserializes to the given type T
         /// </summary>
         /// <typeparam name="T">The type to deserialize</typeparam>
