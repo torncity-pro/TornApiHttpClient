@@ -16,7 +16,7 @@ namespace TornApiHttpClient
         /// <param name="apikey">The apikey to use for the request</param>
         /// <param name="cancellationToken">The cancellation token for the async</param>
         /// <returns></returns>
-        public Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, CancellationToken cancellationToken = default) where T : PropertyBagBase
+        public Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, CancellationToken cancellationToken = default) where T : PropertyBagBase;
 
         /// <summary>
         /// Gets the json response from the api endpoint and deserializes to the given type T
