@@ -11,8 +11,8 @@ namespace TornApiHttpClient
 {
     public class TornApiHttpClient : ITornApiHttpClient
     {
-        private const string _baseUrl = "https://api.torn.com/";
-        private HttpClient _client { get; set; }
+        private const string BaseUrl = "https://api.torn.com/";
+        private HttpClient Client { get; }
 
         public TornApiHttpClient() : this(null)
         {
@@ -22,10 +22,10 @@ namespace TornApiHttpClient
         public TornApiHttpClient(HttpClient client)
         {
             client ??= new HttpClient();
-            _client = client;
+            Client = client;
 
-            _client.BaseAddress = new Uri(_baseUrl);
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            Client.BaseAddress = new Uri(BaseUrl);
+            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace TornApiHttpClient
         /// <returns></returns>
         public async Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, CancellationToken cancellationToken = default) where T : PropertyBagBase
         {
-            return await GetTornDataAsync<T>(string.Format("{0}/{1}?selections={2}&key={3}", endpoint, resource, selections, apikey), cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<T>($"{endpoint}/{resource}?selections={selections}&key={apikey}", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -48,27 +48,24 @@ namespace TornApiHttpClient
         /// </summary>
         /// <typeparam name="T">The type to deserialize</typeparam>
         /// <param name="resource">The web url to query</param>
+        /// <param name="cancellationToken">The cancellation token for the async</param>
         /// <returns>A new data object will be returned on success or an error will be thrown</returns>
         public async Task<T> GetTornDataAsync<T>(string resource, CancellationToken cancellationToken = default) where T : PropertyBagBase
         {
             var request = new HttpRequestMessage(HttpMethod.Get, resource);
-            var response = await this._client.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             request.Dispose();
 
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode) return default;
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var payload = JsonConvert.DeserializeObject<T>(content);
+
+            if (payload.ErrorInfo != null)
             {
-                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var payload = JsonConvert.DeserializeObject<T>(content);
-
-                if (payload.ErrorInfo != null)
-                {
-                    throw ApiException.CreateExceptionFromExceptionInfo(payload.ErrorInfo);
-                }
-
-                return payload;
+                throw ApiException.CreateExceptionFromExceptionInfo(payload.ErrorInfo);
             }
 
-            return default;
+            return payload;
         }
     }
 }

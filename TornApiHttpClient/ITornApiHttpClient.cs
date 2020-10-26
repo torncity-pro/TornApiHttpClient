@@ -23,6 +23,7 @@ namespace TornApiHttpClient
         /// </summary>
         /// <typeparam name="T">The type to deserialize</typeparam>
         /// <param name="resource">The web url to query</param>
+        /// <param name="cancellationToken">The cancellation token for the async</param>
         /// <returns>A new data object will be returned on success or an error will be thrown</returns>
         public Task<T> GetTornDataAsync<T>(string resource, CancellationToken cancellationToken = default) where T : PropertyBagBase;
     }
