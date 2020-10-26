@@ -40,6 +40,11 @@ namespace TornApiHttpClient
         /// <returns></returns>
         public async Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, CancellationToken cancellationToken = default) where T : PropertyBagBase
         {
+            if (string.IsNullOrWhiteSpace(resource))
+            {
+                resource = string.Empty;
+            }
+
             return await GetTornDataAsync<T>($"{endpoint}/{resource}?selections={selections}&key={apikey}", cancellationToken).ConfigureAwait(false);
         }
 
