@@ -12,23 +12,23 @@ namespace TornApiHttpClient
 {
     public interface ITornApiHttpClient
     {
-        Task<FactionPropertyBag> GetFactionDataAsync(string key, CancellationToken cancellationToken = default);
-        Task<FactionPropertyBag> GetFactionDataAsync(string key, string selections, CancellationToken cancellationToken = default);
-        Task<FactionPropertyBag> GetFactionDataAsync(string key, string factionId, string selections, CancellationToken cancellationToken = default);
-        Task<UserPropertyBag> GetUserDataAsync(string key, CancellationToken cancellationToken = default);
-        Task<UserPropertyBag> GetUserDataAsync(string key, string selections, CancellationToken cancellationToken = default);
-        Task<UserPropertyBag> GetUserDataAsync(string key, string userId, string selections, CancellationToken cancellationToken = default);
-        Task<PropertyPropertyBag> GetPropertyDataAsync(string key, CancellationToken cancellationToken = default);
-        Task<PropertyPropertyBag> GetPropertyDataAsync(string key, string selections, CancellationToken cancellationToken = default);
-        Task<PropertyPropertyBag> GetPropertyDataAsync(string key, string propertyId, string selections, CancellationToken cancellationToken = default);
-        Task<CompanyPropertyBag> GetCompanyDataAsync(string key, CancellationToken cancellationToken = default);
-        Task<CompanyPropertyBag> GetCompanyDataAsync(string key, string selections, CancellationToken cancellationToken = default);
-        Task<CompanyPropertyBag> GetCompanyDataAsync(string key, string companyId, string selections, CancellationToken cancellationToken = default);
-        Task<ItemMarketPropertyBag> GetItemDataAsync(string key, CancellationToken cancellationToken = default);
-        Task<ItemMarketPropertyBag> GetItemDataAsync(string key, string selections, CancellationToken cancellationToken = default);
-        Task<ItemMarketPropertyBag> GetItemDataAsync(string key, string itemId, string selections, CancellationToken cancellationToken = default);
-        Task<TornPropertyBag> GetTornDataAsync(string key, string selections, CancellationToken cancellationToken = default);
-        Task<TornPropertyBag> GetTornDataAsync(string key, string resourceId, string selections, CancellationToken cancellationToken = default);
+        Task<FactionPropertyBag> GetFactionDataAsync(string apikey, CancellationToken cancellationToken = default);
+        Task<FactionPropertyBag> GetFactionDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
+        Task<FactionPropertyBag> GetFactionDataAsync(string apikey, string factionId, string selections, CancellationToken cancellationToken = default);
+        Task<UserPropertyBag> GetUserDataAsync(string apikey, CancellationToken cancellationToken = default);
+        Task<UserPropertyBag> GetUserDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
+        Task<UserPropertyBag> GetUserDataAsync(string apikey, string userId, string selections, CancellationToken cancellationToken = default);
+        Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, CancellationToken cancellationToken = default);
+        Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
+        Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, string propertyId, string selections, CancellationToken cancellationToken = default);
+        Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, CancellationToken cancellationToken = default);
+        Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
+        Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, string companyId, string selections, CancellationToken cancellationToken = default);
+        Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, CancellationToken cancellationToken = default);
+        Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
+        Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, string itemId, string selections, CancellationToken cancellationToken = default);
+        Task<TornPropertyBag> GetTornDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
+        Task<TornPropertyBag> GetTornDataAsync(string apikey, string resourceId, string selections, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets data from the Torn endpoint

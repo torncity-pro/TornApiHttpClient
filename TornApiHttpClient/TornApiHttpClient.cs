@@ -35,99 +35,99 @@ namespace TornApiHttpClient
         }
 
         #region Faction
-        public async Task<FactionPropertyBag> GetFactionDataAsync(string key, CancellationToken cancellationToken = default)
+        public async Task<FactionPropertyBag> GetFactionDataAsync(string apikey, CancellationToken cancellationToken = default)
         {
-            return await GetFactionDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+            return await GetFactionDataAsync(apikey, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<FactionPropertyBag> GetFactionDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        public async Task<FactionPropertyBag> GetFactionDataAsync(string apikey, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetFactionDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+            return await GetFactionDataAsync(apikey, string.Empty, selections, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<FactionPropertyBag> GetFactionDataAsync(string key, string factionId, string selections, CancellationToken cancellationToken = default)
+        public async Task<FactionPropertyBag> GetFactionDataAsync(string apikey, string factionId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<FactionPropertyBag>("faction", key, factionId, selections, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<FactionPropertyBag>("faction", apikey, factionId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
         #region User
-        public async Task<UserPropertyBag> GetUserDataAsync(string key, CancellationToken cancellationToken = default)
+        public async Task<UserPropertyBag> GetUserDataAsync(string apikey, CancellationToken cancellationToken = default)
         {
-            return await GetUserDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+            return await GetUserDataAsync(apikey, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<UserPropertyBag> GetUserDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        public async Task<UserPropertyBag> GetUserDataAsync(string apikey, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetUserDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+            return await GetUserDataAsync(apikey, string.Empty, selections, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<UserPropertyBag> GetUserDataAsync(string key, string userId, string selections, CancellationToken cancellationToken = default)
+        public async Task<UserPropertyBag> GetUserDataAsync(string apikey, string userId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<UserPropertyBag>("user", key, userId, selections, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<UserPropertyBag>("user", apikey, userId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
         #region Property
-        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string key, CancellationToken cancellationToken = default)
+        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, CancellationToken cancellationToken = default)
         {
-            return await GetPropertyDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+            return await GetPropertyDataAsync(apikey, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetPropertyDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+            return await GetPropertyDataAsync(apikey, string.Empty, selections, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string key, string propertyId, string selections, CancellationToken cancellationToken = default)
+        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, string propertyId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<PropertyPropertyBag>("property", key, propertyId, selections, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<PropertyPropertyBag>("property", apikey, propertyId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
         #region Company
-        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string key, CancellationToken cancellationToken = default)
+        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, CancellationToken cancellationToken = default)
         {
-            return await GetCompanyDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+            return await GetCompanyDataAsync(apikey, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetCompanyDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+            return await GetCompanyDataAsync(apikey, string.Empty, selections, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string key, string companyId, string selections, CancellationToken cancellationToken = default)
+        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, string companyId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<CompanyPropertyBag>("company", key, companyId, selections, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<CompanyPropertyBag>("company", apikey, companyId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
         #region Market
-        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string key, CancellationToken cancellationToken = default)
+        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, CancellationToken cancellationToken = default)
         {
-            return await GetItemDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+            return await GetItemDataAsync(apikey, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetItemDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+            return await GetItemDataAsync(apikey, string.Empty, selections, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string key, string itemId, string selections, CancellationToken cancellationToken = default)
+        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, string itemId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<ItemMarketPropertyBag>("market", itemId, selections, key, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<ItemMarketPropertyBag>("market", apikey, itemId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
         #region Torn
-        public async Task<TornPropertyBag> GetTornDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        public async Task<TornPropertyBag> GetTornDataAsync(string apikey, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync(apikey, string.Empty, selections, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<TornPropertyBag> GetTornDataAsync(string key, string resourceId, string selections, CancellationToken cancellationToken = default)
+        public async Task<TornPropertyBag> GetTornDataAsync(string apikey, string resourceId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<TornPropertyBag>("torn", key, resourceId, selections, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<TornPropertyBag>("torn", apikey, resourceId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
         
@@ -143,6 +143,21 @@ namespace TornApiHttpClient
         /// <returns></returns>
         public async Task<T> GetTornDataAsync<T>(string endpoint, string apikey, string resource, string selections, CancellationToken cancellationToken = default) where T : PropertyBagBase
         {
+            if (string.IsNullOrWhiteSpace(endpoint))
+            {
+                throw new ArgumentException("Endpoint cannot be null, empty, or whitespace", nameof(endpoint));
+            }
+            
+            if (string.IsNullOrWhiteSpace(apikey))
+            {
+                throw new ArgumentException("ApiKey cannot be null, empty, or whitespace", nameof(apikey));
+            }
+
+            if (typeof(T) == typeof(TornPropertyBag) && string.IsNullOrWhiteSpace(selections))
+            {
+                throw new ArgumentException("Selections for Torn endpoint cannot be null or empty", nameof(selections));
+            }
+            
             if (string.IsNullOrWhiteSpace(resource))
             {
                 resource = string.Empty;
