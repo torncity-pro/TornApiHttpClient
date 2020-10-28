@@ -5,7 +5,13 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using TornJson.CommonData;
+using TornJson.CompanyData;
 using TornJson.Exceptions;
+using TornJson.FactionData;
+using TornJson.ItemData;
+using TornJson.PropertyData;
+using TornJson.TornData;
+using TornJson.UserData;
 
 namespace TornApiHttpClient
 {
@@ -28,6 +34,103 @@ namespace TornApiHttpClient
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+        #region Faction
+        public async Task<FactionPropertyBag> GetFactionDataAsync(string key, CancellationToken cancellationToken = default)
+        {
+            return await GetFactionDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<FactionPropertyBag> GetFactionDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetFactionDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<FactionPropertyBag> GetFactionDataAsync(string key, string factionId, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetTornDataAsync<FactionPropertyBag>("faction", factionId, selections, key, cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+
+        #region User
+        public async Task<UserPropertyBag> GetUserDataAsync(string key, CancellationToken cancellationToken = default)
+        {
+            return await GetUserDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<UserPropertyBag> GetUserDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetUserDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<UserPropertyBag> GetUserDataAsync(string key, string userId, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetTornDataAsync<UserPropertyBag>("user", userId, selections, key, cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+
+        #region Property
+        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string key, CancellationToken cancellationToken = default)
+        {
+            return await GetPropertyDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetPropertyDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<PropertyPropertyBag> GetPropertyDataAsync(string key, string propertyId, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetTornDataAsync<PropertyPropertyBag>("property", propertyId, selections, key, cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+
+        #region Company
+        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string key, CancellationToken cancellationToken = default)
+        {
+            return await GetCompanyDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetCompanyDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<CompanyPropertyBag> GetCompanyDataAsync(string key, string companyId, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetTornDataAsync<CompanyPropertyBag>("company", companyId, selections, key, cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+
+        #region Market
+        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string key, CancellationToken cancellationToken = default)
+        {
+            return await GetItemDataAsync(key, string.Empty, string.Empty, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetItemDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<ItemMarketPropertyBag> GetItemDataAsync(string key, string itemId, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetTornDataAsync<ItemMarketPropertyBag>("market", itemId, selections, key, cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+
+        #region Torn
+        public async Task<TornPropertyBag> GetTornDataAsync(string key, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetTornDataAsync(key, string.Empty, selections, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<TornPropertyBag> GetTornDataAsync(string key, string resourceId, string selections, CancellationToken cancellationToken = default)
+        {
+            return await GetTornDataAsync<TornPropertyBag>("torn", resourceId, selections, key, cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+        
         /// <summary>
         /// Gets data from the Torn endpoint
         /// </summary>
@@ -52,12 +155,12 @@ namespace TornApiHttpClient
         /// Gets the json response from the api endpoint and deserializes to the given type T
         /// </summary>
         /// <typeparam name="T">The type to deserialize</typeparam>
-        /// <param name="resource">The web url to query</param>
+        /// <param name="resourceString">The web url to query</param>
         /// <param name="cancellationToken">The cancellation token for the async</param>
         /// <returns>A new data object will be returned on success or an error will be thrown</returns>
-        public async Task<T> GetTornDataAsync<T>(string resource, CancellationToken cancellationToken = default) where T : PropertyBagBase
+        public async Task<T> GetTornDataAsync<T>(string resourceString, CancellationToken cancellationToken = default) where T : PropertyBagBase
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, resource);
+            var request = new HttpRequestMessage(HttpMethod.Get, resourceString);
             var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             request.Dispose();
 
