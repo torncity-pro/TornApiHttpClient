@@ -185,7 +185,7 @@ namespace TornApiHttpClient
 
             if (payload.ErrorInfo != null)
             {
-                throw ApiException.CreateExceptionFromExceptionInfo(payload.ErrorInfo);
+                throw payload.ErrorInfo.CreateExceptionFromExceptionInfo();
             }
 
             return payload;
