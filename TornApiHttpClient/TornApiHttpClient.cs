@@ -47,7 +47,7 @@ namespace TornApiHttpClient
 
         public async Task<FactionPropertyBag> GetFactionDataAsync(string key, string factionId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<FactionPropertyBag>("faction", factionId, selections, key, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<FactionPropertyBag>("faction", key, factionId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
@@ -64,7 +64,7 @@ namespace TornApiHttpClient
 
         public async Task<UserPropertyBag> GetUserDataAsync(string key, string userId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<UserPropertyBag>("user", userId, selections, key, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<UserPropertyBag>("user", key, userId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
@@ -81,7 +81,7 @@ namespace TornApiHttpClient
 
         public async Task<PropertyPropertyBag> GetPropertyDataAsync(string key, string propertyId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<PropertyPropertyBag>("property", propertyId, selections, key, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<PropertyPropertyBag>("property", key, propertyId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
@@ -98,7 +98,7 @@ namespace TornApiHttpClient
 
         public async Task<CompanyPropertyBag> GetCompanyDataAsync(string key, string companyId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<CompanyPropertyBag>("company", companyId, selections, key, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<CompanyPropertyBag>("company", key, companyId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
@@ -127,7 +127,7 @@ namespace TornApiHttpClient
 
         public async Task<TornPropertyBag> GetTornDataAsync(string key, string resourceId, string selections, CancellationToken cancellationToken = default)
         {
-            return await GetTornDataAsync<TornPropertyBag>("torn", resourceId, selections, key, cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<TornPropertyBag>("torn", key, resourceId, selections, cancellationToken).ConfigureAwait(false);
         }
         #endregion
         
@@ -141,14 +141,14 @@ namespace TornApiHttpClient
         /// <param name="apikey">The apikey to use for the request</param>
         /// <param name="cancellationToken">The cancellation token for the async</param>
         /// <returns></returns>
-        public async Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, CancellationToken cancellationToken = default) where T : PropertyBagBase
+        public async Task<T> GetTornDataAsync<T>(string endpoint, string apikey, string resource, string selections, CancellationToken cancellationToken = default) where T : PropertyBagBase
         {
             if (string.IsNullOrWhiteSpace(resource))
             {
                 resource = string.Empty;
             }
 
-            return await GetTornDataAsync<T>($"{endpoint}/{resource}?selections={selections}&key={apikey}", cancellationToken).ConfigureAwait(false);
+            return await GetTornDataAsync<T>($"{endpoint}/{resource}?key={apikey}&selections={selections}", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
