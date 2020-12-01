@@ -7,7 +7,7 @@
     <Product>TornApiHttpClient</Product>
     <Description>An interface to the Torn City API.</Description>
     <Copyright>2020</Copyright>
-	<Version>1.2.3</Version>
+	<Version>2.3.0</Version>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Torn TornCity City API</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TornCityJsonData" Version="2.1.4" />
+    <PackageReference Include="TornCityJsonData" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
