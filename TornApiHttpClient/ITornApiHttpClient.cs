@@ -12,23 +12,13 @@ namespace TornApiHttpClient
 {
     public interface ITornApiHttpClient
     {
-        Task<FactionPropertyBag> GetFactionDataAsync(string apikey, CancellationToken cancellationToken = default);
-        Task<FactionPropertyBag> GetFactionDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
-        Task<FactionPropertyBag> GetFactionDataAsync(string apikey, string factionId, string selections, CancellationToken cancellationToken = default);
-        Task<UserPropertyBag> GetUserDataAsync(string apikey, CancellationToken cancellationToken = default);
-        Task<UserPropertyBag> GetUserDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
-        Task<UserPropertyBag> GetUserDataAsync(string apikey, string userId, string selections, CancellationToken cancellationToken = default);
-        Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, CancellationToken cancellationToken = default);
-        Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
-        Task<PropertyPropertyBag> GetPropertyDataAsync(string apikey, string propertyId, string selections, CancellationToken cancellationToken = default);
-        Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, CancellationToken cancellationToken = default);
-        Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
-        Task<CompanyPropertyBag> GetCompanyDataAsync(string apikey, string companyId, string selections, CancellationToken cancellationToken = default);
-        Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, CancellationToken cancellationToken = default);
-        Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
-        Task<ItemMarketPropertyBag> GetItemDataAsync(string apikey, string itemId, string selections, CancellationToken cancellationToken = default);
-        Task<TornPropertyBag> GetTornDataAsync(string apikey, string selections, CancellationToken cancellationToken = default);
-        Task<TornPropertyBag> GetTornDataAsync(string apikey, string resourceId, string selections, CancellationToken cancellationToken = default);
+        Task<FactionPropertyBag> GetFactionDataAsync(string ApiKey, string FactionId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
+        Task<UserPropertyBag> GetUserDataAsync(string Apikey, string UserId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
+        Task<PropertyPropertyBag> GetPropertyDataAsync(string Apikey, string PropertyId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
+        Task<CompanyPropertyBag> GetCompanyDataAsync(string ApiKey, string CompanyId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
+        Task<ItemMarketPropertyBag> GetItemDataAsync(string ApiKey, string ItemId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
+        Task<TornPropertyBag> GetTornDataAsync(string ApiKey, string Selections, string Comment = default, CancellationToken cancellationToken = default);
+        Task<TornPropertyBag> GetTornDataAsync(string ApiKey, string ResourceId, string Selections, string Comment = default, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets data from the Torn endpoint
@@ -38,9 +28,10 @@ namespace TornApiHttpClient
         /// <param name="resource">The id of what you want to query</param>
         /// <param name="selections">The selections you want to make</param>
         /// <param name="apikey">The apikey to use for the request</param>
+        /// <param name="comment">The comment to use for the request</param>
         /// <param name="cancellationToken">The cancellation token for the async</param>
         /// <returns></returns>
-        Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, CancellationToken cancellationToken = default) where T : PropertyBagBase;
+        Task<T> GetTornDataAsync<T>(string endpoint, string resource, string selections, string apikey, string comment = default, CancellationToken cancellationToken = default) where T : PropertyBagBase;
 
         /// <summary>
         /// Gets the json response from the api endpoint and deserializes to the given type T
