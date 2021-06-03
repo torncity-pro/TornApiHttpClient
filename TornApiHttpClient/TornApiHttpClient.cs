@@ -27,7 +27,7 @@ namespace TornApiHttpClient
 
         public TornApiHttpClient(HttpClient client)
         {
-            client ??= new HttpClient();
+            client ??= new HttpClient(new HttpClientHandler() { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
             Client = client;
 
             Client.BaseAddress = new Uri(BaseUrl);
