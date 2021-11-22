@@ -9,6 +9,7 @@ using TornJson.CompanyData;
 using TornJson.Exceptions;
 using TornJson.FactionData;
 using TornJson.ItemData;
+using TornJson.KeyData;
 using TornJson.PropertyData;
 using TornJson.TornData;
 using TornJson.UserData;
@@ -78,6 +79,13 @@ namespace TornApiHttpClient
         public async Task<TornPropertyBag> GetTornDataAsync(string ApiKey, string ResourceId, string Selections, string Comment = default, CancellationToken CancellationToken = default)
         {
             return await GetTornDataAsync<TornPropertyBag>("torn", ApiKey, ResourceId, Selections, Comment, CancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+
+        #region Key
+        public async Task<KeyDataPropertyBag> GetKeyDataAsync(string ApiKey, string Selections = default, string Comment = default, CancellationToken CancellationToken = default)
+        {
+            return await GetTornDataAsync<KeyDataPropertyBag>("key", ApiKey, string.Empty, Selections ?? "info", Comment, CancellationToken);
         }
         #endregion
 

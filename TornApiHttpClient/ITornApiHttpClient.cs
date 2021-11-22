@@ -4,6 +4,7 @@ using TornJson.CommonData;
 using TornJson.CompanyData;
 using TornJson.FactionData;
 using TornJson.ItemData;
+using TornJson.KeyData;
 using TornJson.PropertyData;
 using TornJson.TornData;
 using TornJson.UserData;
@@ -17,6 +18,7 @@ namespace TornApiHttpClient
         Task<PropertyPropertyBag> GetPropertyDataAsync(string Apikey, string PropertyId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
         Task<CompanyPropertyBag> GetCompanyDataAsync(string ApiKey, string CompanyId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
         Task<ItemMarketPropertyBag> GetItemDataAsync(string ApiKey, string ItemId = default, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
+        Task<KeyDataPropertyBag> GetKeyDataAsync(string ApiKey, string Selections = default, string Comment = default, CancellationToken CancellationToken = default);
         Task<TornPropertyBag> GetTornDataAsync(string ApiKey, string Selections, string Comment = default, CancellationToken cancellationToken = default);
         Task<TornPropertyBag> GetTornDataAsync(string ApiKey, string ResourceId, string Selections, string Comment = default, CancellationToken cancellationToken = default);
 
